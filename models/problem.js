@@ -3,58 +3,67 @@ const mongoose = require("mongoose");
 const problemSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
     },
     description: {
         type: String,
-        required: true,
     },
     difficulty: {
         type: String,
-        required: true,
     },
     topicTag: {
         type: [String],
-        required: true,
     },
     companyTag: {
         type: [String],
-        required: true,
     },
     hints: {
-        type: [String],
-        required: true,
+        type: {
+            hint1: {
+                type: String,
+            },
+            hint2: {
+                type: String,
+            },
+            hint3: {
+                type: String,
+            },
+            hint4: {
+                type: String,
+            },
+            hint5: {
+                type: String,
+            },
+        },
+    },
+    score: {
+        type: Number,
     },
     testCases: {
         type: [
             {
                 input: {
                     type: String,
-                    required: true,
                 },
                 output: {
                     type: String,
-                    required: true,
                 },
                 hidden: {
                     type: Boolean,
-                    required: true,
                 },
                 maxTimeLimit: {
                     type: Number,
-                    required: true,
                 },
             },
         ],
-        required: true,
     },
     solution: {
         type: String,
-        required: true,
+    },
+    videoLink: {
+        type: String,
     },
     language: {
         type: String,
-        required: true,
         default: "Java",
     },
     date: {

@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
     res.send("Status Ok!");
 });
 
-app.use("/problems", problemRouter);
+app.use("/api/problems", problemRouter);
 app.listen(PORT, () => {
     console.log(
         chalk.blue(`Server is running on port http://localhost:${PORT}/`)

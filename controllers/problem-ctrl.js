@@ -30,9 +30,12 @@ module.exports.createOneProblem = async (req, res) => {
         topicTag,
         companyTag,
         hints,
+        score,
         testCases,
         solution,
         language,
+        videoLink,
+        date,
     } = req.body;
     const newProblem = new Problem({
         title,
@@ -41,9 +44,12 @@ module.exports.createOneProblem = async (req, res) => {
         topicTag,
         companyTag,
         hints,
+        score,
         testCases,
         solution,
         language,
+        videoLink,
+        date,
     });
     try {
         const problem = await newProblem.save();
@@ -63,9 +69,12 @@ module.exports.updateOneProblem = async (req, res) => {
         topicTag,
         companyTag,
         hints,
+        score,
         testCases,
         solution,
         language,
+        videoLink,
+        date,
     } = req.body;
     try {
         const problem = await Problem.findById(id);
@@ -75,9 +84,12 @@ module.exports.updateOneProblem = async (req, res) => {
         if (topicTag) problem.topicTag = topicTag;
         if (companyTag) problem.companyTag = companyTag;
         if (hints) problem.hints = hints;
+        if (score) problem.score = score;
         if (testCases) problem.testCases = testCases;
         if (solution) problem.solution = solution;
         if (language) problem.language = language;
+        if (videoLink) problem.videoLink = videoLink;
+        if (date) problem.date = date;
         const updatedProblem = await problem.save();
         res.status(200).json(updatedProblem);
     } catch (err) {
