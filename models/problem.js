@@ -46,7 +46,7 @@ const problemSchema = new mongoose.Schema({
             output: {
                 type: String,
             },
-            explanation: {
+            explaination: {
                 type: String,
             },
         },
@@ -57,7 +57,7 @@ const problemSchema = new mongoose.Schema({
             output: {
                 type: String,
             },
-            explanation: {
+            explaination: {
                 type: String,
             },
         },
