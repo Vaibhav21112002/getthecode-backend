@@ -47,11 +47,8 @@ const problemSchema = new mongoose.Schema({
                 output: {
                     type: String,
                 },
-                hidden: {
-                    type: Boolean,
-                },
-                maxTimeLimit: {
-                    type: Number,
+                explanation: {
+                    type: String,
                 },
             },
         ],
