@@ -38,29 +38,15 @@ const problemSchema = new mongoose.Schema({
     score: {
         type: Number,
     },
-    testCases: {
-        testCase1: {
-            input: {
-                type: String,
-            },
-            output: {
-                type: String,
-            },
-            explaination: {
-                type: String,
-            },
-        },
-        testCase2: {
-            input: {
-                type: String,
-            },
-            output: {
-                type: String,
-            },
-            explaination: {
-                type: String,
-            },
-        },
+    testCases:
+    {
+        type: [
+            {
+                input: { type: String },
+                output: { type: String },
+                explaination: { type: String }
+            }
+        ]
     },
     solution: {
         type: String,
