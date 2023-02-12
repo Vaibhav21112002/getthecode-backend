@@ -15,7 +15,7 @@ exports.getBlogs = async (req, res, next) => {
 exports.createBlog = async (req, res, next) => {
 	const title = req.body.title;
 	const content = req.body.content;
-	const image = req.body.image;
+	const keywords = req.body.keywords;
 	const tags = req.body.tags;
 	const company = req.body.company ? req.body.company : "default";
 	const blog = new Blog({
@@ -58,7 +58,7 @@ exports.updateBlog = async (req, res, next) => {
 	const id = req.params.id;
 	const title = req.body.title;
 	const content = req.body.content;
-	const image = req.body.image;
+	const keywords = req.body.keywords;
 	const tags = req.body.tags;
 	const company = req.body.company ? req.body.company : "default";
 
@@ -70,8 +70,9 @@ exports.updateBlog = async (req, res, next) => {
 
 		blog.title = title;
 		blog.content = content;
-		blog.image = image;
+		blog.keywords = keywords;
 		blog.tags = tags;
+		blog.company = company;
 
 		const result = await blog.save();
 		res.status(200).json(result);
