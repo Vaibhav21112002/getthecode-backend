@@ -5,22 +5,23 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const problemRouter = require("./routes/problem-router");
-
+const blogRouter = require("./routes/blog-router");
+const mcqRouter = require("./routes/mcq-router");
 
 db();
 dotenv.config();
 const app = express();
 app.use(
-    bodyParser.json({
-        limit: "30mb",
-        extended: true,
-    })
+	bodyParser.json({
+		limit: "30mb",
+		extended: true,
+	})
 );
 app.use(
-    bodyParser.urlencoded({
-        limit: "30mb",
-        extended: true,
-    })
+	bodyParser.urlencoded({
+		limit: "30mb",
+		extended: true,
+	})
 );
 
 app.use(express.json());
@@ -28,12 +29,14 @@ app.use(cors());
 const PORT = process.env.PORT || 5001;
 
 app.get("/", (req, res) => {
-    res.send("Status Ok!");
+	res.send("Status Ok!");
 });
 
 app.use("/api/problems", problemRouter);
+app.use("/api/blogs", blogRouter);
+app.use("/api/mcqs", mcqRouter);
 app.listen(PORT, () => {
-    console.log(
-        chalk.blue(`Server is running on port http://localhost:${PORT}/`)
-    );
+	console.log(
+		chalk.blue(`Server is running on port http://localhost:${PORT}/`)
+	);
 });
