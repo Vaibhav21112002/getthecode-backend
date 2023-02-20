@@ -16,16 +16,16 @@ exports.createBlog = async (req, res, next) => {
 	const title = req.body.title;
 	const content = req.body.content;
 	const keywords = req.body.keywords;
-	const tags = req.body.tags;
+	const tag = req.body.tag;
 	const company = req.body.company ? req.body.company : "default";
 	const blog = new Blog({
 		title: title,
 		content: content,
-		image: image,
-		tags: tags,
+		keywords:keywords,
+		tag: tag,
 		company: company,
 	});
-
+	console.log(blog);
 	try {
 		await blog.save();
 		res.status(201).json(blog);
@@ -39,12 +39,12 @@ exports.createBlog = async (req, res, next) => {
 
 exports.getBlog = async (req, res, next) => {
 	const { id } = req.params;
-	console.log(id);
+	// console.log(id);
 	try {
 		const blog = await Blog.find({
 			_id: id,
 		});
-		console.log(blog);
+		// console.log(blog);
 		if (!blog) {
 			res.status(404).json({ message: "Blog not found!" });
 		}
