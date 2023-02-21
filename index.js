@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const problemRouter = require("./routes/problem-router");
 const blogRouter = require("./routes/blog-router");
 const mcqRouter = require("./routes/mcq-router");
+const cloudinaryRouter = require("./routes/cloudinary-router");
 
 db();
 dotenv.config();
@@ -35,6 +36,8 @@ app.get("/", (req, res) => {
 app.use("/api/problems", problemRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/mcqs", mcqRouter);
+app.use("/api/cloudinary", cloudinaryRouter);
+
 app.listen(PORT, () => {
 	console.log(
 		chalk.blue(`Server is running on port http://localhost:${PORT}/`)

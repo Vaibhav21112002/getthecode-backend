@@ -10,11 +10,12 @@ const mcqSchema = new mongoose.Schema({
 			{
 				no: {
 					type: Number,
-					required: true,
 				},
-				option: {
+				text: {
 					type: String,
-					required: true,
+				},
+				image: {
+					type: String,
 				},
 			},
 		],
