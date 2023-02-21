@@ -42,7 +42,6 @@ router.post("/upload-multiple", upload.array("images"), (req, res) => {
     for (let i = 0; i < images.length; i++) {
         imagesUploaded.push(URL.createObjectURL(images[i]));
     }
-    console.log(imagesUploaded)
     let imageArray = [];
     for (let i = 0; i < imagesUploaded.length; i++) {
         cloudinary.uploader.upload(imagesUploaded[i], (err, result) => {

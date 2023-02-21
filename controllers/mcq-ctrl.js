@@ -13,7 +13,6 @@ exports.getMcqs = async (req, res, next) => {
 };
 
 exports.createMcq = async (req, res, next) => {
-	console.log("req.body: ", req.body);
 	const question = req.body.question;
 	const options = req.body.options;
 	const answer = req.body.answer;
