@@ -25,6 +25,9 @@ const mcqSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
+	topicTag: {
+		type: String,
+	},
 });
 
 module.exports = mongoose.model("Mcq", mcqSchema);
