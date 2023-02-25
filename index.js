@@ -8,6 +8,7 @@ const problemRouter = require("./routes/problem-router");
 const blogRouter = require("./routes/blog-router");
 const mcqRouter = require("./routes/mcq-router");
 const cloudinaryRouter = require("./routes/cloudinary-router");
+const contactRouter = require("./routes/contact-router");
 
 db();
 dotenv.config();
@@ -16,13 +17,13 @@ app.use(
 	bodyParser.json({
 		limit: "30mb",
 		extended: true,
-	})
+	}),
 );
 app.use(
 	bodyParser.urlencoded({
 		limit: "30mb",
 		extended: true,
-	})
+	}),
 );
 
 app.use(express.json());
@@ -37,9 +38,10 @@ app.use("/api/problems", problemRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/mcqs", mcqRouter);
 app.use("/api/cloudinary", cloudinaryRouter);
+app.use("/api/contact", contactRouter);
 
 app.listen(PORT, () => {
 	console.log(
-		chalk.blue(`Server is running on port http://localhost:${PORT}/`)
+		chalk.blue(`Server is running on port http://localhost:${PORT}/`),
 	);
 });
