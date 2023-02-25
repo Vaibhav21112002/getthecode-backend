@@ -51,6 +51,7 @@ module.exports.createOneProblem = async (req, res) => {
         videoLink,
         date,
     });
+    console.log(newProblem);
     try {
         const problem = await newProblem.save();
         res.status(201).json(problem);

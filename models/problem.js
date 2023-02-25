@@ -49,7 +49,11 @@ const problemSchema = new mongoose.Schema({
         ]
     },
     solution: {
-        type: String,
+        type: {
+            java:{type:String},
+            cpp:{type:String},
+            python:{type:String}
+        },
     },
     videoLink: {
         type: String,
