@@ -39,12 +39,10 @@ exports.createBlog = async (req, res, next) => {
 
 exports.getBlog = async (req, res, next) => {
 	const { id } = req.params;
-	// console.log(id);
 	try {
 		const blog = await Blog.find({
 			_id: id,
 		});
-		// console.log(blog);
 		if (!blog) {
 			res.status(404).json({ message: "Blog not found!" });
 		}

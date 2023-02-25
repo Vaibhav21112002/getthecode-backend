@@ -10,11 +10,12 @@ const mcqSchema = new mongoose.Schema({
 			{
 				no: {
 					type: Number,
-					required: true,
 				},
-				option: {
+				text: {
 					type: String,
-					required: true,
+				},
+				image: {
+					type: String,
 				},
 			},
 		],
@@ -23,6 +24,9 @@ const mcqSchema = new mongoose.Schema({
 	answer: {
 		type: Number,
 		required: true,
+	},
+	topicTag: {
+		type: String,
 	},
 });
 

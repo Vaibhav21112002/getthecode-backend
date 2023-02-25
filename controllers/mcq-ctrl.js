@@ -16,11 +16,13 @@ exports.createMcq = async (req, res, next) => {
 	const question = req.body.question;
 	const options = req.body.options;
 	const answer = req.body.answer;
+	const topicTag = req.body.topicTag;
 
 	const mcq = new MCQ({
 		question: question,
 		options: options,
 		answer: answer,
+		topicTag: topicTag,
 	});
 
 	try {
@@ -57,6 +59,7 @@ exports.updateMcq = async (req, res, next) => {
 	const question = req.body.question;
 	const options = req.body.options;
 	const answer = req.body.answer;
+	const topicTag = req.body.topicTag;
 	try {
 		const mcq = await MCQ.findById(id);
 		if (!mcq) {
@@ -67,6 +70,7 @@ exports.updateMcq = async (req, res, next) => {
 		mcq.question = question;
 		mcq.options = options;
 		mcq.answer = answer;
+		mcq.topicTag = topicTag;
 		const result = await mcq.save();
 		res.status(200).json(result);
 	} catch (err) {
