@@ -18,12 +18,14 @@ exports.createBlog = async (req, res, next) => {
 	const keywords = req.body.keywords;
 	const tag = req.body.tag;
 	const company = req.body.company ? req.body.company : "default";
+	const image = req.body.image;
 	const blog = new Blog({
 		title: title,
 		content: content,
 		keywords:keywords,
 		tag: tag,
 		company: company,
+		image: image
 	});
 	console.log(blog);
 	try {
@@ -59,6 +61,7 @@ exports.updateBlog = async (req, res, next) => {
 	const keywords = req.body.keywords;
 	const tags = req.body.tags;
 	const company = req.body.company ? req.body.company : "default";
+	const image = req.body.image;
 
 	try {
 		const blog = await Blog.findById(id);
@@ -71,6 +74,7 @@ exports.updateBlog = async (req, res, next) => {
 		blog.keywords = keywords;
 		blog.tags = tags;
 		blog.company = company;
+		blog.image = image;
 
 		const result = await blog.save();
 		res.status(200).json(result);
