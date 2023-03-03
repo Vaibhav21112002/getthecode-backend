@@ -6,6 +6,7 @@ const blogSchema = mongoose.Schema({
   keywords: { type: String, required: true },
   tag: { type: String, required: true },
   company: { type: String },
+  image : {type : String}
 });
 
 module.exports = mongoose.model("Blog", blogSchema);
