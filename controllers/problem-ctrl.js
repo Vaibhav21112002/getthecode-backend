@@ -110,45 +110,5 @@ module.exports.deleteOneProblem = async (req, res) => {
     }
 };
 
-Problem.aggregate([
-    {
-      $unwind: "$topicTag"
-    },
-    {
-      $group: {
-        _id: "$topicTag",
-        count: { $sum: 1 }
-      }
-    },
-    {
-      $group: {
-        _id: null,
-        totalQuestions: { $sum: 1 }, // count the total number of questions
-        data: { $push: { label: "$_id", value: "$count" } }
-      }
-    },
-    {
-      $project: {
-        _id: 0,
-        labels: "$data.label",
-        values: {
-          $map: {
-            input: "$data",
-            as: "item",
-            in: { $multiply: [{ $divide: ["$$item.value", "$totalQuestions"] }, 100] }
-          }
-        }
-      }
-    }
-  ]).exec(function (err, data) {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(data);
-      // data is an array with a single object in the following format:
-      // [{ labels: ["topic tag 1", "topic tag 2", "topic tag 3"], values: [25, 50, 25] }]
-    }
-  });
-  
   
   
