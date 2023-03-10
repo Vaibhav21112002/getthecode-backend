@@ -10,7 +10,7 @@ const sqlSchema = new mongoose.Schema({
     required: true,
   },
   tables: {
-    type: [{ numRows: { type: Number }, numCols: { type: Number },tableData:{type:[[String]]} }],
+    type: [{ numRows: { type: Number }, numCols: { type: Number },name:{type:String},tableData:{type:[[String]]} }],
   },
   difficulty: {
     type: String,
