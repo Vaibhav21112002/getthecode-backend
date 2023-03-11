@@ -22,7 +22,7 @@ const mcqSchema = new mongoose.Schema({
 		required: true,
 	},
 	answer: {
-		type: Number,
+		type: [Number],
 		required: true,
 	},
 	topicTag: {
