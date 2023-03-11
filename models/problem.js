@@ -66,6 +66,9 @@ const problemSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    link : {
+        type: String,
+    }
 });
 
 module.exports = mongoose.model("Problem", problemSchema);
