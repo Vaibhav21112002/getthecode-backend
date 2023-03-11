@@ -9,7 +9,8 @@ const blogRouter = require("./routes/blog-router");
 const mcqRouter = require("./routes/mcq-router");
 const cloudinaryRouter = require("./routes/cloudinary-router");
 const contactRouter = require("./routes/contact-router");
-const sqlRouter = require('./routes/sql-router')
+const sqlRouter = require("./routes/sql-router");
+const techNewsRouter = require("./routes/techNews-router");
 
 db();
 dotenv.config();
@@ -41,6 +42,7 @@ app.use("/api/mcqs", mcqRouter);
 app.use("/api/cloudinary", cloudinaryRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/sql", sqlRouter);
+app.use("/api/technews", techNewsRouter);
 
 app.listen(PORT, () => {
 	console.log(
