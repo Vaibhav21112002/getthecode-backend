@@ -59,6 +59,7 @@ module.exports.createOneProblem = async (req, res) => {
 		language,
 		videoLink,
 		date,
+		link,
 	} = req.body;
 	const newProblem = new Problem({
 		title,
@@ -73,6 +74,7 @@ module.exports.createOneProblem = async (req, res) => {
 		language,
 		videoLink,
 		date,
+		link,
 	});
 	try {
 		const problem = await newProblem.save();
@@ -98,6 +100,7 @@ module.exports.updateOneProblem = async (req, res) => {
 		language,
 		videoLink,
 		date,
+		link,
 	} = req.body;
 	try {
 		const problem = await Problem.findById(id);
@@ -113,6 +116,7 @@ module.exports.updateOneProblem = async (req, res) => {
 		if (language) problem.language = language;
 		if (videoLink) problem.videoLink = videoLink;
 		if (date) problem.date = date;
+		if (link) problem.link = link;
 		const updatedProblem = await problem.save();
 		res.status(200).json(updatedProblem);
 	} catch (err) {

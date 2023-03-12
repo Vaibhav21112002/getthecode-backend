@@ -9,8 +9,13 @@ const blogRouter = require("./routes/blog-router");
 const mcqRouter = require("./routes/mcq-router");
 const cloudinaryRouter = require("./routes/cloudinary-router");
 const contactRouter = require("./routes/contact-router");
+<<<<<<< HEAD
 const sqlRouter = require('./routes/sql-router')
 const authRouter = require('./routes/auth-router')
+=======
+const sqlRouter = require("./routes/sql-router");
+const techNewsRouter = require("./routes/techNews-router");
+>>>>>>> 003cb6a48a9bed3c857246bea2b476770b2812a9
 
 db();
 dotenv.config();
@@ -42,7 +47,11 @@ app.use("/api/mcqs", mcqRouter);
 app.use("/api/cloudinary", cloudinaryRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/sql", sqlRouter);
+<<<<<<< HEAD
 app.use("/api/auth", authRouter);
+=======
+app.use("/api/technews", techNewsRouter);
+>>>>>>> 003cb6a48a9bed3c857246bea2b476770b2812a9
 
 app.listen(PORT, () => {
 	console.log(
