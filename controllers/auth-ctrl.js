@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const JWT_SECRET = "thisismysecretkey";
 
 module.exports.register = async (req, res) => {
-  console.log(req.body);
+
   const { name, email, password, number } = req.body;
   const user = await User.findOne({ email: email });
   if (!name || !email || !password || !number) {
@@ -41,6 +41,7 @@ module.exports.register = async (req, res) => {
       message: "User created successfully",
       user,
       token,
+      status:true,
     });
   } catch (err) {
     return res.status(500).json({
@@ -61,6 +62,7 @@ module.exports.login = async (req, res) => {
         status: false,
       });
     }
+
     if (!user) {
       return res.status(200).json({
         message: "User does not exist",
@@ -98,13 +100,20 @@ module.exports.login = async (req, res) => {
 };
 
 module.exports.getUser = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.body.id;
 
   try {
     const user = await User.findById(userId).select("-password");
+    if(!user){
+      return res.status(404).json({
+        message:"No such user exixsts.",
+        status:false
+      })
+    }
     return res.status(200).json({
       message: "User fetched successfully",
       user,
+      status:true
     });
   } catch (error) {
     return res.status(500).json({
@@ -117,6 +126,7 @@ module.exports.getUser = async (req, res) => {
 
 module.exports.sendOtp = async (req, res) => {
   const { email } = req.body;
+  console.log(req.body);
 
   try {
     const user = await User.findOne({ email });
@@ -147,7 +157,7 @@ module.exports.sendOtp = async (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log(error);
+       
         return res
           .status(500)
           .json({ msg: "Failed to send OTP. Please try again later." });
@@ -196,7 +206,7 @@ module.exports.changePassword = async (req, res) => {
     return res.status(200).json({ msg: "Password updated successfully" });
   } catch (error) {
     return res.status(500).json({
-      message: "Error logging in",
+      message: "Error changing password.",
       error: error,
       status: false,
     });

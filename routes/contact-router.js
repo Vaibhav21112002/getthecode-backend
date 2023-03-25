@@ -5,7 +5,7 @@ const fetchUser = require("../middleware/login");
 
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
-  console.log(req.body);
+
   const mailOptions = {
     to: "guptavaibhav432@gmail.com",
     bcc: "guptavaibhav432@gmail.com",
@@ -22,7 +22,6 @@ router.post("/", async (req, res) => {
         <p>${req.body.message}</p>
       `,
   };
-  console.log(mailOptions);
   const mail = sendMail(mailOptions);
   if (mail) {
     res.status(200).json({

@@ -27,7 +27,7 @@ exports.createBlog = async (req, res, next) => {
 		company: company,
 		image: image
 	});
-	console.log(blog);
+
 	try {
 		await blog.save();
 		res.status(201).json(blog);

@@ -46,7 +46,6 @@ module.exports.createOneSql = async (req, res) => {
         videoLink,
         date
     });
-    console.log(newSql);
     try {
         const sql = await newSql.save();
         res.status(201).json(sql);
@@ -69,7 +68,6 @@ module.exports.updateOneSql = async (req, res) => {
         videoLink,
         date
     } = req.body;
-    console.log(req.body,"editing");
     try {
         const sql = await Sql.findById(id);
         if (title) sql.title = title;

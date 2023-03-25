@@ -8,10 +8,11 @@ const {
 	updateTechNews,
 	deleteTechNews,
 } = require("../controllers/techNews-ctrl");
+const fetchUser = require("../middleware/login");
 
-router.get("/", getAllTechNews);
+router.get("/", fetchUser, getAllTechNews);
 router.post("/", createTechNews);
-router.get("/:id", getTechNews);
+router.get("/:id", fetchUser, getTechNews);
 router.put("/:id", updateTechNews);
 router.delete("/:id", deleteTechNews);
 

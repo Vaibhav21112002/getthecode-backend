@@ -32,7 +32,6 @@ module.exports.getBySubString = async (req, res) => {
 		for(let i = 0; i < problems.length; i++) {
 			for(let j = 0; j < problems[i].topicTag.length; j++) {
 				if(problems[i].topicTag[j].toLowerCase().includes(topic.toLowerCase())) {
-					console.log(problems[i].topicTag[j].toLowerCase(), topic.toLowerCase());
 					filteredProblems.push(problems[i]);
 					break;
 				}
