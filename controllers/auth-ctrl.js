@@ -35,7 +35,7 @@ module.exports.register = async (req, res) => {
       user_data: {
         id: user._id,
         role: user.role,
-        date: user.date,
+        date: new Date(),
         name: user.name,
       },
     };
@@ -252,7 +252,7 @@ module.exports.adminLogin = async (req, res) => {
       user_data: {
         id: admin._id,
         role: admin.role,
-        date: admin.date,
+        date: new Date(),
         name: admin.name,
       },
     };
@@ -303,13 +303,13 @@ module.exports.getAdminData = async (req, res) => {
   try {
     const verified = jwt.verify(token,JWT_SECRET);
     const data = verified.user_data;
-    console.log(verified);
-    const decodedToken = jwt.verify(token, JWT_SECRET);
-    const userData = decodedToken.user_data;
-    console.log(userData.id); // logs the user's ID
-    console.log(userData.role); // logs the user's role
-    console.log(userData.date); // logs the user's date
-    console.log(userData.name); // logs the user's name
+    // console.log(verified);
+    // const decodedToken = jwt.verify(token, JWT_SECRET);
+    // const userData = decodedToken.user_data;
+    // console.log(userData.id); // logs the user's ID
+    // console.log(userData.role); // logs the user's role
+    // console.log(userData.date); // logs the user's date
+    // console.log(userData.name); // logs the user's name
 
     return res.status(200).json({ data: data });
   } catch (error) {
