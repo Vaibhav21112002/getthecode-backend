@@ -67,7 +67,13 @@ const problemSchema = new mongoose.Schema({
         default: Date.now,
     },
     link : {
-        type: String,
+        type: {
+            gfg:{type:String},
+            leetcode:{type:String},
+            codeforces:{type:String},
+            codechef:{type:String},
+            interviewbit:{type:String},
+        }
     }
 });
 
