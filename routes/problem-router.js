@@ -11,8 +11,8 @@ const {
 } = require("../controllers/problem-ctrl");
 
 router.get("/",getAllProblems);
-router.get("/:id",fetchUser, getOneProblem);
-router.post("/search",fetchUser, getBySubString);
+router.get("/:id", getOneProblem);
+router.post("/search/all", getBySubString);
 router.post("/",fetchUser, createOneProblem);
 router.put("/:id",fetchUser, updateOneProblem);
 router.delete("/:id",fetchUser, deleteOneProblem);

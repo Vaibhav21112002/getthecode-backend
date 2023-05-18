@@ -23,8 +23,12 @@ module.exports.getOneProblem = async (req, res) => {
 
 module.exports.getBySubString = async (req, res) => {
 	const { topic } = req.body;
+	if(topic === "all"){
+		const problems = await Problem.find();
+		return res.status(200).json(problems);
+	}
 	if (!topic) {
-		res.status(400).json({ message: "Invalid request" });
+		return res.status(400).json({ message: "Invalid request" });
 	}
 	try {
 		const problems = await Problem.find();
